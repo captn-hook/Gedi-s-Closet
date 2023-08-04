@@ -1,0 +1,33 @@
+{
+  "name": "gedi-s-closet",
+  "version": "1.0.0",
+  "description": "how to save \r git add .\r period is add all files\r git commit -am \"message\"\r saves it locally, only push when done for the day",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --config ./bundler/webpack.prod.js",
+    "dev": "webpack serve --config ./bundler/webpack.dev.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/captn-hook/Gedi-s-Closet.git"
+  },
+  "author": "tristan hook chaie kargbo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/captn-hook/Gedi-s-Closet/issues"
+  },
+  "homepage": "https://github.com/captn-hook/Gedi-s-Closet#readme",
+  "dependencies": {
+    "babel-loader": "^9.1.3",
+    "copy-webpack-plugin": "^11.0.0",
+    "css-loader": "^6.8.1",
+    "html-loader": "^4.2.0",
+    "html-webpack-plugin": "^5.5.3",
+    "mini-css-extract-plugin": "^2.7.6",
+    "webpack": "^5.88.2"
+  },
+  "devDependencies": {
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1"
+  }
+}
