@@ -4,17 +4,26 @@ const MiniCSSExtractPlugin = require('mini-css-extract-plugin')
 const path = require('path')
 
 const pages = [
-    'index',
+    'home',
     'about',
-    'contact',
-    'services',
-    'clients',
+    'donate',
+    'inventory',
+    'staff',
+    'volunteer',
+    'events',
 ]
 
 module.exports = {
     entry: './src/index.js',
     target: 'web',
     devtool: 'source-map',
+    output: {
+        path: path.resolve(__dirname, '../dist'),
+        filename: '[name].bundle.js',
+        clean: true,
+        publicPath: '/',
+        library: 'App'
+    },        
     plugins: [
         new CopyWebpackPlugin({
             patterns: [{
@@ -24,7 +33,7 @@ module.exports = {
         new MiniCSSExtractPlugin(),
         //HTML template for each page
         ...pages.map(page => new HtmlWebpackPlugin({
-            template: `./src/${page}.html`,
+            template: `./src/Pages/${page}/${page}.html`,
             filename: `${page}.html`,
             chunks: [`${page}`]
         }))
@@ -48,7 +57,7 @@ module.exports = {
             {
                 test: /\.css$/,
                 use: [
-                    MiniCSSExtractPlugin.loader,
+                    'style-loader',
                     'css-loader'
                 ],
                 include: /\.module\.css$/
