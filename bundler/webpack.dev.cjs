@@ -1,5 +1,5 @@
 const { merge } = require('webpack-merge')
-const commonConfiguration = require('./webpack.common.js')
+const commonConfiguration = require('./webpack.common.cjs')
 const path = require('path');
 
 module.exports = merge(
