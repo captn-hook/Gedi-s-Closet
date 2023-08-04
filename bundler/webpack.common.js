@@ -3,6 +3,14 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCSSExtractPlugin = require('mini-css-extract-plugin')
 const path = require('path')
 
+const pages = [
+    'index',
+    'about',
+    'contact',
+    'services',
+    'clients',
+]
+
 module.exports = {
     entry: './src/index.js',
     target: 'web',
@@ -14,9 +22,12 @@ module.exports = {
             }]
         }),
         new MiniCSSExtractPlugin(),
-        new HtmlWebpackPlugin({
-            template: './src/index.html'
-        })
+        //HTML template for each page
+        ...pages.map(page => new HtmlWebpackPlugin({
+            template: `./src/${page}.html`,
+            filename: `${page}.html`,
+            chunks: [`${page}`]
+        }))
     ],
     module: {
         rules: [
@@ -39,7 +50,8 @@ module.exports = {
                 use: [
                     MiniCSSExtractPlugin.loader,
                     'css-loader'
-                ]
+                ],
+                include: /\.module\.css$/
             },
             // Images
             {
@@ -62,8 +74,5 @@ module.exports = {
                 }]
             },
         ]
-    },
-    externals: {
-        fs: 'fs'
     }
 }
