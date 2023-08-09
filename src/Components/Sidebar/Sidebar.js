@@ -1,6 +1,12 @@
+import './Sidebar.css';
+
 import {
     pages
 } from '../../Pages.js';
+
+import {
+    LanguageButton
+} from '../Language/Language.js';
 
 /*
 //sidebar
@@ -16,9 +22,12 @@ import {
 <span id="menuBT" class="menuBT">Menu</span>
 */
 
-export default function Sidebar() {
+export default function Sidebar(current = undefined) {
+    //remove current page from pages if defined
+    if (current) {
+        pages.splice(pages.indexOf(current), 1);
+    }
     //returns a sidebar element
-    console.log('Sidebar()');
     const sidebar = document.createElement('div');
     sidebar.id = 'sidenav';
     sidebar.className = 'sidenav';
@@ -33,15 +42,18 @@ export default function Sidebar() {
     const menuBT = SidebarButton();
     menuBT.addEventListener('click', openNav);
 
+    const lb = LanguageButton();
+    sidebar.appendChild(lb);
+
     document.getElementById('main').prepend(menuBT);
     document.body.prepend(sidebar);
 
     return sidebar;
 }
 
+
 function SidebarButton() {
     //returns a sidebar button element
-    console.log('SidebarButton()');
     const sidebarButton = document.createElement('span');
     sidebarButton.id = 'menuBT';
     sidebarButton.className = 'menuBT';
