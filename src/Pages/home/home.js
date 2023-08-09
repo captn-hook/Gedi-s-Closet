@@ -11,7 +11,9 @@ function homePage() {
     for (let page of pages) {
         if (page === 'home') continue;
         //get page summary
-        const card = Card(page, page, page);
+        const img = undefined;
+        const txt = require(`../../Pages/${page}/${page}ENG.txt`);
+        const card = Card(page, txt.default, img);
         document.getElementById('cardContainer').appendChild(card);
     }
     import('./homeENG.txt').then(module => {
