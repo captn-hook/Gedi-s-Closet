@@ -15,6 +15,9 @@
     background-color: rgb(132, 93, 169);
     margin: 10px;
     background-size: cover;
+    /* aspect ratio 1:1 */
+    max-width: 40%;
+    max-height: 30%;
   }
   
   /* On mouse-over, add a deeper shadow */
@@ -41,5 +44,8 @@
     text-shadow: 2px 2px 4px #000000;
     padding: 10px;
     background: rgba(0, 0, 0, 0.5);
+
+    /* limit length of text */
+    overflow: hidden;
   }
   

@@ -7,9 +7,10 @@ import './Card.css';
     </div>
 </div> */
 
-export function Card(title, text, image) {
-    //returns a card element
+export function Card(id, title, text, image) {
+   
     const card = document.createElement('div');
+    card.id = id;
     card.className = 'card';
     card.style = `background-image: url(${image});`;
     card.innerHTML = `
